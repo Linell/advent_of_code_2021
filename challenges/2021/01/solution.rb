@@ -24,7 +24,25 @@ module Year2021
     end
 
     def part_2(input)
-      nil
+      depth_measurements = input.split.map(&:to_i)
+      results = depth_measurements.each_with_index.inject({
+        decrease: 0,
+        last_total: nil
+      }) do |totals, (measurements, index)|
+        unless (index + 2) > (depth_measurements.length - 1)
+          band = [index, index + 1, index + 2].map {|idx| depth_measurements[idx] }
+          sum = band.sum
+
+          if !totals[:last_total].nil? && totals[:last_total] < sum
+            totals[:decrease] = totals[:decrease].next
+          end
+
+          totals[:last_total] = sum
+        end
+        totals
+      end
+
+      results[:decrease]
     end
   end
 end

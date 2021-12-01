@@ -27,11 +27,7 @@ RSpec.describe Year2021::Day01 do
 
   describe "part 2" do
     it "returns nil for the example input" do
-      expect(puzzle.part_2(example_input)).to eq(nil)
-    end
-
-    it "returns nil for my input" do
-      expect(puzzle.part_2(input)).to eq(nil)
+      expect(puzzle.part_2(example_input)).to eq(5)
     end
   end
 end
